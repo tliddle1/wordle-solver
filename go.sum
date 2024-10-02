@@ -2,5 +2,5 @@ github.com/smarty/assertions v1.16.0 h1:EvHNkdRA4QHMrn75NZSoUQ/mAUXAYWfatfB01yTC
 github.com/smarty/assertions v1.16.0/go.mod h1:duaaFdCS0K9dnoM50iyek/eYINOZ64gbh1Xlf6LG7AI=
 github.com/smarty/gunit v1.5.0 h1:OmG6a/rgi7qCjlQis6VjXbvx/WqZ8I6xSlbfN4YB5MY=
 github.com/smarty/gunit v1.5.0/go.mod h1:uAeNibUD292KZRcg5OTy7lb6WR5++UC0BQOzNuiRzpU=
-github.com/tliddle1/wordle v0.0.2 h1:DP3kCG8lQ9/E/gws6rWw4C9FrzwpGCIG8G+caWRvVsE=
-github.com/tliddle1/wordle v0.0.2/go.mod h1:AC6Lco3Vk5CG72ZTYKo49wBGoX96V1i9doQctTZUi+o=
+github.com/tliddle1/wordle v0.0.3 h1:ouLvVLgHU8or3C8JPhgdIJXZJGWI/7Aikl4fsD/OR/0=
+github.com/tliddle1/wordle v0.0.3/go.mod h1:AC6Lco3Vk5CG72ZTYKo49wBGoX96V1i9doQctTZUi+o=
