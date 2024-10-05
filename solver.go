@@ -11,13 +11,9 @@ type MySolver struct {
 }
 
 func NewMySolver() *MySolver {
-	mySolver := MySolver{
-		validTargets: make([]string, len(data.ValidTargets)),
-		validGuesses: make([]string, len(data.ValidGuesses)+len(data.ValidTargets)),
-	}
-	copy(mySolver.validTargets, data.ValidTargets)
-	mySolver.validGuesses = append(data.ValidGuesses, data.ValidTargets...)
-	return &mySolver
+	solver := MySolver{}
+	solver.setData()
+	return &solver
 }
 
 func (this *MySolver) Debug() bool {
@@ -25,11 +21,61 @@ func (this *MySolver) Debug() bool {
 }
 
 func (this *MySolver) Guess(turnHistory []wordle.Turn) string {
-	//TODO implement me
-	panic("implement me")
+	// TODO hard code first guess (once you figure out the best one)
+	//len(turnHistory) == 0 {
+	//	return ""
+	//}
+
+	this.trimValidTargets(turnHistory)
+	return this.calculateWordWithBestExpectedInfo()
 }
 
 func (this *MySolver) Reset() {
+	this.setData()
+}
+
+func (this *MySolver) setData() {
 	this.validTargets = data.ValidTargets
-	this.validGuesses = data.ValidGuesses
+	this.validGuesses = append(data.ValidGuesses, data.ValidTargets...)
+}
+
+func (this *MySolver) trimValidTargets(turnHistory []wordle.Turn) {
+	if len(turnHistory) == 0 {
+		return
+	}
+	lastTurn := turnHistory[len(turnHistory)-1]
+	var newTargets []string
+	for _, target := range this.validTargets {
+		if this.isPossibleTarget(target, lastTurn.Guess, lastTurn.Pattern) {
+			newTargets = append(newTargets, target)
+		}
+	}
+	this.validTargets = newTargets
+}
+
+func (this *MySolver) isPossibleTarget(target string, guess string, pattern wordle.Pattern) bool {
+	return wordle.CheckGuess(target, guess) == pattern
+}
+
+func (this *MySolver) calculateWordWithBestExpectedInfo() string {
+	if len(this.validTargets) == 1 {
+		return this.validTargets[0]
+	}
+
+	var mostExpectedInfo float64
+	var bestWord string
+
+	for _, possibleGuess := range this.validGuesses {
+		info := this.expectedInfo(possibleGuess)
+		if info > mostExpectedInfo {
+			mostExpectedInfo = info
+			bestWord = possibleGuess
+		}
+	}
+	return bestWord
+}
+
+func (this *MySolver) expectedInfo(possibleGuess string) float64 {
+	// TODO implement me!
+	panic("implement expectedInfo")
 }
