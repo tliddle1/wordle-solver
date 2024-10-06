@@ -66,9 +66,9 @@ func (this *MySolver) calculateWordWithBestExpectedInfo() string {
 	var bestWord string
 
 	for _, possibleGuess := range this.validGuesses {
-		info := this.expectedInfo(possibleGuess)
-		if info > mostExpectedInfo {
-			mostExpectedInfo = info
+		expectedInfo := this.expectedInfo(possibleGuess)
+		if expectedInfo > mostExpectedInfo {
+			mostExpectedInfo = expectedInfo
 			bestWord = possibleGuess
 		}
 	}
