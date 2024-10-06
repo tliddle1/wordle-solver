@@ -22,7 +22,7 @@ func (this *MySolver) Debug() bool {
 
 func (this *MySolver) Guess(turnHistory []wordle.Turn) string {
 	// TODO hard code first guess (once you figure out the best one)
-	//len(turnHistory) == 0 {
+	//if len(turnHistory) == 0 {
 	//	return ""
 	//}
 
